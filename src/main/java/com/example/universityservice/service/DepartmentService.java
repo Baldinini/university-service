@@ -1,14 +1,15 @@
 package com.example.universityservice.service;
 
-import com.example.universityservice.dto.DepartmentStatisticDto;
+import com.example.universityservice.model.Department;
 import com.example.universityservice.model.Lector;
 
 public interface DepartmentService {
-    Lector getHeadOfDepartment(String departmentName);
+    void save(Department department);
 
-    DepartmentStatisticDto getDepartmentStatistic(String departmentName);
+    Lector getHeadOfDepartment(String name);
 
-    int getAverageSalary(String departmentName);
+    int countAllEmploys(String name);
 
-    int countAllEmploys(String departmentName);
+    int getAverageSalaryOfDepartment(String name);
+
 }
