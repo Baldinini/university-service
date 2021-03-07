@@ -1,6 +1,6 @@
 package com.example.universityservice.model;
 
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import lombok.Data;
 
-@Entity
-@Table(name = "departments")
+@Entity(name = "departments")
 @Data
 public class Department {
     @Id
@@ -21,7 +19,7 @@ public class Department {
     @Column(unique = true)
     private String name;
     @ManyToMany
-    private List<Lector> lectors;
+    private Set<Lector> lectors;
     @OneToOne
     private Lector headOfDepartment;
 }

@@ -6,11 +6,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Data;
 
-@Entity
-@Table(name = "lectors")
+@Entity(name = "lectors")
 @Data
 public class Lector {
     @Id

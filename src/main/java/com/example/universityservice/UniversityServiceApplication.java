@@ -5,7 +5,8 @@ import com.example.universityservice.model.Department;
 import com.example.universityservice.model.Lector;
 import com.example.universityservice.service.DepartmentService;
 import com.example.universityservice.service.LectorService;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -34,6 +35,7 @@ public class UniversityServiceApplication {
 
         ConfigurableApplicationContext context =
                 SpringApplication.run(UniversityServiceApplication.class, args);
+
         LectorService lectorService = context.getBean(LectorService.class);
         lectorService.save(assistance);
         lectorService.save(assProfessor);
@@ -42,12 +44,12 @@ public class UniversityServiceApplication {
         Department aviaDepartment = new Department();
         aviaDepartment.setName("Avia");
         aviaDepartment.setHeadOfDepartment(professor);
-        aviaDepartment.setLectors(List.of(assistance, assProfessor, professor));
+        aviaDepartment.setLectors(Set.of(assistance, assProfessor, professor));
 
         Department carDepartment = new Department();
         carDepartment.setName("Car");
         carDepartment.setHeadOfDepartment(assistance);
-        carDepartment.setLectors(List.of(assistance, professor));
+        carDepartment.setLectors(Set.of(assistance, professor));
 
         DepartmentService departmentService = context.getBean(DepartmentService.class);
         departmentService.save(aviaDepartment);
@@ -59,7 +61,9 @@ public class UniversityServiceApplication {
         System.out.println();
         System.out.println(departmentService
                 .getAverageSalaryOfDepartment(aviaDepartment.getName()));
-        System.out.println();
+        System.out.println(departmentService.countAllEmploys(carDepartment.getName()));
 
+        Map<Degree, Long> statistic = departmentService.getStatistic(aviaDepartment.getName());
+        statistic.entrySet().forEach(System.out::println);
     }
 }

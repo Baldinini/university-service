@@ -19,9 +19,4 @@ public class LectorServiceImpl implements LectorService {
     public void save(Lector lector) {
         lectorRepository.save(lector);
     }
-
-    @Override
-    public Lector getLector(Long id) {
-        return lectorRepository.findById(id).get();
-    }
 }
