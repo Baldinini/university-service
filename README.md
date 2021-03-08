@@ -4,7 +4,7 @@
 
 1. Download and install the [JDK]( https://www.oracle.com/ru/java/technologies/javase-downloads.html).
 2. Download and install [MySQL Server](https://dev.mysql.com/downloads/).
-3. Find file _db.properties_ in resources and change the parameters to yours:
+3. Find file _application.properties_ in resources and change the parameters to yours:
     + url: jdbc:mysql://"host name":"port"/"name db"?serverTimezone=UTC
     + username: "username"
     + password: "password"
