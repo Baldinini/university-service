@@ -13,8 +13,8 @@ public interface DepartmentRepository extends JpaRepository<Department, Long>,
     Optional<Lector> findHeadOfDepartment(String name);
 
     @Query(value = "SELECT d.lectors.size FROM departments d WHERE d.name = :name")
-    int countAllEmployeesOfDepartment(String name);
+    Integer countAllEmployeesOfDepartment(String name);
 
     @Query(value = "SELECT AVG (l.salary) FROM departments d JOIN d.lectors l WHERE d.name = :name")
-    double getAverageSalaryOfDepartment(String name);
+    Double getAverageSalaryOfDepartment(String name);
 }

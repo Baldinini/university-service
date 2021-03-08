@@ -29,13 +29,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public int countAllEmploys(String name) {
+    public Integer countAllEmploys(String name) {
         return departmentRepository.countAllEmployeesOfDepartment(name);
     }
 
     @Override
-    public double getAverageSalaryOfDepartment(String name) {
-        double averageSalaryOfDepartment = departmentRepository.getAverageSalaryOfDepartment(name);
+    public Double getAverageSalaryOfDepartment(String name) {
+        Double averageSalaryOfDepartment = departmentRepository.getAverageSalaryOfDepartment(name);
         return Math.round(averageSalaryOfDepartment * 100) / 100.0;
     }
 

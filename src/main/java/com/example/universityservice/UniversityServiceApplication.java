@@ -1,5 +1,7 @@
 package com.example.universityservice;
 
+import com.example.universityservice.console.Application;
+import com.example.universityservice.console.CommandHandler;
 import com.example.universityservice.model.Degree;
 import com.example.universityservice.model.Department;
 import com.example.universityservice.model.Lector;
@@ -55,15 +57,9 @@ public class UniversityServiceApplication {
         departmentService.save(aviaDepartment);
         departmentService.save(carDepartment);
 
-        System.out.println(departmentService.getHeadOfDepartment(aviaDepartment.getName()));
-        System.out.println();
-        System.out.println(departmentService.countAllEmploys(aviaDepartment.getName()));
-        System.out.println();
-        System.out.println(departmentService
-                .getAverageSalaryOfDepartment(aviaDepartment.getName()));
-        System.out.println(departmentService.countAllEmploys(carDepartment.getName()));
+        Map<String, CommandHandler> beansOfType = context.getBeansOfType(CommandHandler.class);
 
-        Map<Degree, Long> statistic = departmentService.getStatistic(aviaDepartment.getName());
-        statistic.entrySet().forEach(System.out::println);
+        Application application = new Application(beansOfType);
+        application.run();
     }
 }
